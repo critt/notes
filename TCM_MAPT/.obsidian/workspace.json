@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Resources.md",
+                "file": "Android Static Analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Resources"
+              "title": "Android Static Analysis"
             }
           }
         ]
@@ -160,19 +160,23 @@
   },
   "active": "af729599a79fd06e",
   "lastOpenFiles": [
+    "Screenshot 2024-12-02 at 12.32.24 PM 1.png",
+    "Screenshot 2024-12-02 at 12.32.24 PM.png",
+    "The Mobile Penetration Testing Process.md",
+    "The Penetration Testing Process.md",
+    "Android Static Analysis.md",
+    "Screenshot 2024-12-02 at 12.15.27 PM 1.png",
+    "Screenshot 2024-12-02 at 12.15.27 PM.png",
+    "ADB.md",
+    "Screenshot 2024-12-02 at 12.01.53 PM.png",
+    "Resources.md",
+    "Screenshot 2024-12-02 at 9.27.36 AM.png",
     "Application Security and Signing.md",
     "Android Security Architecture.md",
-    "Resources.md",
     "Screenshot 2024-11-30 at 1.27.05 PM.png",
     "Screenshot 2024-11-30 at 1.51.48 PM.png",
     "Screenshot 2024-11-30 at 1.48.23 PM 1.png",
     "Screenshot 2024-11-30 at 1.48.23 PM.png",
-    "Screenshot 2024-11-30 at 1.46.27 PM.png",
-    "Screenshot 2024-11-30 at 1.27.05 PM 1.png",
-    "Screenshot 2024-11-30 at 1.15.20 PM.png",
-    "The Mobile Penetration Testing Process.md",
-    "Screenshot 2024-11-30 at 12.58.39 PM.png",
-    "The Penetration Testing Process.md",
-    "Screenshot 2024-11-30 at 12.44.11 PM.png"
+    "Screenshot 2024-11-30 at 1.46.27 PM.png"
   ]
 }
