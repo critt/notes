@@ -1,4 +1,3 @@
-
 ##### APK Unpacking
 `jadx`, `jadx-gui`, `apktool`
 ##### Strings

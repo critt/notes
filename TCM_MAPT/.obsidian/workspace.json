@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0080b272a30a8e1f",
+        "id": "bf30c542ed1505c2",
         "type": "tabs",
         "children": [
           {
-            "id": "af729599a79fd06e",
+            "id": "c0613fbf4097d00d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Android Static Analysis.md",
+                "file": "Android Dynamic Analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Android Static Analysis"
+              "title": "Android Dynamic Analysis"
             }
           }
         ]
@@ -77,7 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 347.5
+    "width": 200
   },
   "right": {
     "id": "ceed0ea478e210c1",
@@ -158,25 +158,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "af729599a79fd06e",
+  "active": "c0613fbf4097d00d",
   "lastOpenFiles": [
-    "Screenshot 2024-12-02 at 12.32.24 PM 1.png",
-    "Screenshot 2024-12-02 at 12.32.24 PM.png",
+    "ADB.md",
     "The Mobile Penetration Testing Process.md",
     "The Penetration Testing Process.md",
+    "Screenshot 2024-12-02 at 12.32.24 PM 1.png",
+    "Resources.md",
+    "Application Security and Signing.md",
     "Android Static Analysis.md",
+    "Android Security Architecture.md",
+    "Android Dynamic Analysis.md",
+    "Screenshot 2024-12-02 at 12.32.24 PM.png",
     "Screenshot 2024-12-02 at 12.15.27 PM 1.png",
     "Screenshot 2024-12-02 at 12.15.27 PM.png",
-    "ADB.md",
     "Screenshot 2024-12-02 at 12.01.53 PM.png",
-    "Resources.md",
     "Screenshot 2024-12-02 at 9.27.36 AM.png",
-    "Application Security and Signing.md",
-    "Android Security Architecture.md",
     "Screenshot 2024-11-30 at 1.27.05 PM.png",
     "Screenshot 2024-11-30 at 1.51.48 PM.png",
     "Screenshot 2024-11-30 at 1.48.23 PM 1.png",
-    "Screenshot 2024-11-30 at 1.48.23 PM.png",
-    "Screenshot 2024-11-30 at 1.46.27 PM.png"
+    "Screenshot 2024-11-30 at 1.48.23 PM.png"
   ]
 }
