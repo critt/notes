@@ -234,3 +234,12 @@ https://koz.io/using-frida-on-android-without-root/
 critt@Mac workbench % objection explore
 critt@Mac workbench % android sslpinning disable
 ```
+
+##### objection core function on startup
+```
+critt@Mac workbench % objection explore -s "android root disable"
+```
+##### codeshare script on startup
+```
+critt@Mac workbench % objection explore --startup-script sslpinninguniversal.js
+```
