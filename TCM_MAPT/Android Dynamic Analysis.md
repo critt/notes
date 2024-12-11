@@ -243,3 +243,9 @@ critt@Mac workbench % objection explore -s "android root disable"
 ```
 critt@Mac workbench % objection explore --startup-script sslpinninguniversal.js
 ```
+
+
+### Other concepts to keep in mind
+- In-line attacks
+- Injecting a production APK with a Metasploit shell
+- Ghost Framework
