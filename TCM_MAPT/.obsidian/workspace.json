@@ -4,24 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "02d2e102f4cf9cd5",
+        "id": "93cbae414652c0ba",
         "type": "tabs",
         "children": [
           {
-            "id": "89e6f1d8663bdb73",
+            "id": "db4fa94ff5bd2f70",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "iOS Security Architecture.md",
+                "file": "Android Static Analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "iOS Security Architecture"
+              "title": "Android Static Analysis"
+            }
+          },
+          {
+            "id": "601e39f7121c2847",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "iOS Security Architecture and Themes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "iOS Security Architecture and Themes"
+            }
+          },
+          {
+            "id": "435ed544e571cb82",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Android Dynamic Analysis.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Android Dynamic Analysis"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -158,31 +187,32 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "89e6f1d8663bdb73",
+  "active": "601e39f7121c2847",
   "lastOpenFiles": [
-    "Screenshot 2024-12-13 at 3.08.33 PM.png",
-    "Android Dynamic Analysis.md",
-    "Android Security Architecture.md",
-    "Ghost Framework.md",
-    "Android core concept review.md",
-    "iOS Security Architecture.md",
-    "Databases.md",
-    "Injured Android CTF.md",
-    "Application Security and Signing.md",
+    "iOS Static Analysis.md",
     "Android Static Analysis.md",
-    "ADB.md",
     "The Mobile Penetration Testing Process.md",
     "The Penetration Testing Process.md",
-    "Screenshot 2024-12-02 at 12.32.24 PM 1.png",
+    "Static Analysis in CI Workflows.md",
     "Resources.md",
+    "iOS Security Architecture and Themes.md",
+    "Injured Android CTF.md",
+    "Ghost Framework.md",
+    "Screenshot 2024-12-13 at 5.31.45 PM.png",
+    "Android Dynamic Analysis.md",
+    "Application Security and Signing.md",
+    "Databases.md",
+    "Screenshot 2024-12-13 at 3.08.33 PM.png",
+    "Android Security Architecture.md",
+    "Android core concept review.md",
+    "ADB.md",
+    "Screenshot 2024-12-02 at 12.32.24 PM 1.png",
     "Screenshot 2024-12-02 at 12.32.24 PM.png",
     "Screenshot 2024-12-02 at 12.15.27 PM 1.png",
     "Screenshot 2024-12-02 at 12.15.27 PM.png",
     "Screenshot 2024-12-02 at 12.01.53 PM.png",
     "Screenshot 2024-12-02 at 9.27.36 AM.png",
     "Screenshot 2024-11-30 at 1.27.05 PM.png",
-    "Screenshot 2024-11-30 at 1.51.48 PM.png",
-    "Screenshot 2024-11-30 at 1.48.23 PM 1.png",
-    "Screenshot 2024-11-30 at 1.48.23 PM.png"
+    "Screenshot 2024-11-30 at 1.51.48 PM.png"
   ]
 }
