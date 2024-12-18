@@ -234,8 +234,84 @@ sealed class ApiResult <out T> {
 
 
 
+### Kotlin Flows
+*Kotlin Flow is a reactive streams library designed for handling streams of data asynchronously. It provides a type-safe way of working with asynchronous data streams and is built on top of coroutines.*
+
+*Basic example: fetching data*
+```kotlin
+fun fetchData(): Flow<String> = flow {
+    val data = // Fetch data from network
+    emit(data)
+}
+
+fun main() = runBlocking {
+    fetchData().collect { data ->
+        println("Received data: $data")
+    }
+}
+```
+
+*Example of the producer end of a Flow. In this case, it is a `callbackFlow` that exposes data received by a socket with `trySend()`*
+```kotlin
+private fun initSocket(socket: Socket?, config: Map<String, Any>): Flow<SpeechData> = callbackFlow {
+    socket?.connect()
+    socket?.emit("startGoogleCloudStream", Gson().toJson(config))
+
+    socket?.on("speechData") { args ->
+        Gson().fromJson(args[0].toString(), SpeechData::class.java).let {
+            println("Object speechData: $it")
+            trySend(it)
+        }
+    }
+
+    awaitClose {
+        socket?.emit("endGoogleCloudStream")
+        socket?.off("speechData")
+        socket?.disconnect()
+    }
+}
+```
+
+*Example of the consumer end of a Flow. In this case, a `ViewModel` collecting data from a `callbackFlow` and posting all consumed values to `LiveData`*
+```kotlin
+viewModelScope.launch(context = Dispatchers.IO) {
+    repository.connectSubject(langSubject.value!!.language, langObject.value!!.language).collect {
+        Timber.d("speakerCurr: $speakerCurr")
+        if (it.isFinal) {
+            builderSubject.append(it.data)
+            translationSubject.postValue(builderSubject.toString())
+        } else {
+            translationSubject.postValue(builderSubject.toString() + it.data)
+        }
+    }
+}
+```
 
 
+#### SharedFlow
+*A hot Flow that provides event cache and buffer features. Suitable for performance-relevant implementations involving many collectors*
+- *New collectors can retrieve some of the latest events from the cache and collect new ones as they are emitted*
+- *buffer behavior can be defined to provide events to slower consumers without suspending emitters*
+
+#### StateFlow
+*A simple Flow for managing state. Supports "current value" behavior*. 
+- Extends`SharedFlow`
+- hot
+```kotlin
+fun main() = runBlocking {
+    val stateFlow = MutableStateFlow(0)
+
+    launch {
+        stateFlow.collect { value ->
+            println("StateFlow value: $value")
+        }
+    }
+
+    stateFlow.value = 1
+    stateFlow.value = 2
+    println("${stateFlow.value}")
+}
+```
 
 
 Coroutines in Kotlin.
@@ -249,10 +325,6 @@ What is MVVM ?
 MVVM vs MVC vs MVI. Which is better for what case and why?
 What is a ViewModel?
 Do we write business logic in the ViewModel?
-
-What is Flow?
-Difference between StateFlow and SharedFlow.
-How to collect the latest value in the StateFlow in activity?
 
 How to pass data between activities?
 
