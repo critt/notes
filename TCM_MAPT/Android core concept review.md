@@ -1,11 +1,11 @@
-### Kotlin vs Java
+## Kotlin vs Java
 - *Kotlin compiles down to Java bytecode and runs on the JVM.*
 - *Kotlin has modern features like coroutines and extension functions.*
 - *Kotlin has inbuilt null safety--Java does not.*
 - *Java requires writing much more boilerplate and its Syntax is much more verbose than Kotlin's*
 
 
-### Scope functions in Kotlin:
+## Scope functions in Kotlin:
 `let`, `run`, `with`, `apply`, `also`
 - *A set of functions that allow you to execute a block of code within the context of an object.*
 - *Each function has a context object: `this` or `it`*
@@ -68,7 +68,7 @@ println(numbers) // Outputs: [1, 2, 3, 4]
 
 
 
-### Kotlin generics
+## Kotlin generics
 ```kotlin
 sealed class ApiResult <out T> {  
     data class Success<out R>(val data: R?): ApiResult<R>()  
@@ -180,7 +180,7 @@ stringToStringList = (items, [1, 2, 3])
 
 
 
-### Kotlin classes
+## Kotlin classes
 #### data classes
 *A class primarily used to hold data. Automatically generates useful methods, such as `equals()`, `hashCode()`, `toString()`, and `copy()`, based on the properties defined in the primary constructor.* 
 ```kotlin
@@ -234,7 +234,7 @@ sealed class ApiResult <out T> {
 
 
 
-### Kotlin Flows
+## Kotlin Flows
 *Kotlin Flow is a reactive streams library designed for handling streams of data asynchronously. It provides a type-safe way of working with asynchronous data streams and is built on top of coroutines.*
 
 *Basic example: fetching data*
@@ -314,6 +314,119 @@ fun main() = runBlocking {
 ```
 
 
+## Passing data between Activities
+*Activities can **share** data with a `ViewModel`, but passing data to one another implies a kind of independence, or implies something more akin to messaging or startup with configuration.
+
+*For messaging, i'm not too familiar with any pattern that is commonly used. I'm not sure inter-Activity messaging really has many valid use-cases. I suppose you could use something like an event bus. But this all seems like an anti-Pattern.*
+
+*For passing initialization data to a new Activity, the best way to do this is to put the data in  `Intent` extras, using `@Parcelize` for complex data, including the extras in your call to `startActivity()`, and grabbing the extras in the other Activity with `getExtras()`:*
+```kotlin
+// Create a Parcelable data class
+@Parcelize
+data class User(val name: String, val age: Int) : Parcelable
+
+// In the sending Activity
+val user = User("Alice", 25)
+val intent = Intent(this, SecondActivity::class.java)
+intent.putExtra("user_key", user)
+startActivity(intent)
+
+// In the receiving Activity
+val user = intent.getParcelableExtra<User>("user_key")
+```
+
+
+## `lazy`, `lateinit` delegates
+
+##### `lazy`
+- *Used to initialize a property only when it is accessed for the first time. Useful for expensive initializations that you don't want to perform unless necessary, and if so only want to perform once.*
+- *Thread safe*
+```kotlin
+val property: Type by lazy {
+    // Initialization code
+    Type()
+}
+```
+
+##### `lateinit`
+- *Used only with non-null `var` types.*
+- *Used when you can't initialize your property when it is declared and don't want it to be nullable.*
+- *Examples:*
+	- ***Dependency Injection**: Commonly used in Dagger where dependencies are injected after an object's creation.*
+	- ***UI Components**: Useful in Android for initializing views after the view hierarchy is created.*
+```kotlin
+lateinit var message: String
+
+fun setup() {
+    message = "Hello, Kotlin!"
+}
+
+fun main() {
+    setup()
+    println(message) // Prints: Hello, Kotlin!
+}
+```
+
+
+## Kotlin Multiplatform
+- *What it is is self-evident. Its a way to share core/common code (often business logic)*
+- *It compiles down to the appropriate bytecode for the platforms you are supporting*
+	- *Javas*
+	- *JavaScript*
+	- *Native (iOS, macOS, Linux, Windows)*
+- *Uses something kinda like an abstract/concrete pattern to define common properties and functions and provide their platform-specific implementations:*
+
+##### Example: project structure
+```kotlin
+|-- my-multiplatform-project
+    |-- commonMain
+        |-- kotlin
+            |-- commonCode.kt
+    |-- androidMain
+        |-- kotlin
+            |-- androidCode.kt
+    |-- iosMain
+        |-- kotlin
+            |-- iosCode.kt
+```
+
+##### Example: common code
+```kotlin
+// commonMain/kotlin/Greeting.kt
+expect fun platformName(): String
+
+class Greeting {
+    fun greet(): String = "Hello, ${platformName()}!"
+}
+```
+
+##### Example: Android code
+```kotlin
+// androidMain/kotlin/Greeting.kt
+actual fun platformName(): String = "Android"
+```
+
+##### Example: iOS code
+```kotlin
+// iosMain/kotlin/Greeting.kt
+actual fun platformName(): String = "iOS"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Coroutines in Kotlin.
 What is difference between kotlin coroutines and threads in Java.
 Different types of coroutine scopes.
@@ -326,13 +439,12 @@ MVVM vs MVC vs MVI. Which is better for what case and why?
 What is a ViewModel?
 Do we write business logic in the ViewModel?
 
-How to pass data between activities?
+
 
 What is dagger hilt?
 What is @provides, @module?
 What is singleton?
 
-What is lazy, lateinit?
 
 What are side effects in jetpack compose?
 
@@ -342,8 +454,6 @@ What is disposable effect?
 
 Suppose if I want to set 3 elements in a row in a grid in compose, what would you use?
 
-What is intent? Why do we use it?
-
 What is service & types of service.
 
 Why does android app lag?
@@ -351,9 +461,7 @@ Why does android app lag?
 
 How to improve the performance of recyclerView, lazyColumn?
 
-Explain kotlin multiplatform
 
-What is application context? Difference between it and getContext
 
 
 
@@ -362,9 +470,6 @@ What is LaunchedEffect? (Gave a scenario and i had to tell him the solution for 
 How to handle circular dependency in multi module app and how can we avoid it.
 
 Difference between Bluetooth and Bluetooth low energy.
-
-How to send data from one app to another. - intents
-
 
 
 How to manage versions in multi module apps - version catalogs.
