@@ -413,6 +413,57 @@ actual fun platformName(): String = "iOS"
 ```
 
 
+## Services
+*A component for performing (often long-running) background operations independently from the main application itself. They don't intrinsically have a UI, but they can sometimes be associated with custom notification-based UIs (like playback controls, or background download progress indicators).*
+
+*If you need some kind of processing to persist through app closure, or ensure processing occurs when the app is garbage collected or backgrounded, you almost always use some kind of `Service`*
+
+##### Foreground Service
+*Runs in the foreground and is noticeable to the user because it always displays a notification. Its used for tasks that the user is actively aware of and can benefit from updates on.*
+
+*Example use cases*
+- *Playback controls*
+- *Progress indicators*
+
+*Example implementation*
+```kotlin
+val notification = createNotification()
+startForegroundService(Intent(this, MyService::class.java).apply {
+    putExtra("inputExtra", "Foreground Service Example")
+})
+startForeground(1, notification)
+```
+
+##### Background Service
+*Runs in the background without any user interaction.*
+
+*Example use cases*
+- *Syncing data (where the user doesn't need to know about it)* 
+- *Other network operations*
+- *Database operations*
+
+*Example implementation*
+```kotlin
+override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+    // Perform long-running task in background thread
+    return START_NOT_STICKY
+}
+```
+
+##### Bound Service
+*Provides an interface that allows components like Activities to bind to and interact with it.*
+
+*Example: long running, high volume file syncing operation that supports Pause and Resume functionality*
+```kotlin
+private val binder = LocalBinder()
+inner class LocalBinder : Binder() {
+    fun getService(): MyService = this@MyService
+}
+
+override fun onBind(intent: Intent): IBinder {
+    return binder
+}
+```
 
 
 
@@ -420,13 +471,16 @@ actual fun platformName(): String = "iOS"
 
 
 
+### Jetpack Compose
+What are side effects in jetpack compose?
+What is disposable effect?
+Suppose if I want to set 3 elements in a row in a grid in compose, what would you use?
+App crashes when we use lazyColumn in column how would you solve this issue?
+How to improve the performance of recyclerView, lazyColumn?
+What is LaunchedEffect? (Gave a scenario and i had to tell him the solution for it. The answer was via a launchedeffect)
 
 
-
-
-
-
-
+### Coroutines
 Coroutines in Kotlin.
 What is difference between kotlin coroutines and threads in Java.
 Different types of coroutine scopes.
@@ -434,44 +488,16 @@ How to switch context in coroutines?
 What is Dispatcher in coroutine and types of Dispatcher.
 Difference between async and launch?
 
-What is MVVM ?
-MVVM vs MVC vs MVI. Which is better for what case and why?
-What is a ViewModel?
-Do we write business logic in the ViewModel?
-
-
 
 What is dagger hilt?
 What is @provides, @module?
 What is singleton?
 
 
-What are side effects in jetpack compose?
-
-App crashes when we use lazyColumn in column how would you solve this issue?
-
-What is disposable effect?
-
-Suppose if I want to set 3 elements in a row in a grid in compose, what would you use?
 
 What is service & types of service.
 
-Why does android app lag?
-
-
-How to improve the performance of recyclerView, lazyColumn?
-
-
-
-
-
-What is LaunchedEffect? (Gave a scenario and i had to tell him the solution for it. The answer was via a launchedeffect)
-
 How to handle circular dependency in multi module app and how can we avoid it.
-
-Difference between Bluetooth and Bluetooth low energy.
-
-
 How to manage versions in multi module apps - version catalogs.
 
 Some questions on my app projects and how i implemented them.

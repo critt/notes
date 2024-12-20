@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "170cce56ee690c65",
+        "id": "db9e6b5f8b9186c0",
         "type": "tabs",
         "children": [
           {
-            "id": "e567c90fcedec051",
+            "id": "b924cc337a804785",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -158,8 +158,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e567c90fcedec051",
+  "active": "b924cc337a804785",
   "lastOpenFiles": [
+    "Android core concept review.md",
     "MainViewModel.kt",
     "Screenshot 2024-11-30 at 1.15.20 PM.png",
     "Screenshot 2024-12-13 at 5.31.45 PM.png",
@@ -167,7 +168,6 @@
     "Screenshot 2024-12-02 at 12.32.24 PM 1.png",
     "Screenshot 2024-12-02 at 12.01.53 PM.png",
     "Screenshot 2024-11-30 at 12.44.11 PM.png",
-    "Android core concept review.md",
     "Android Static Analysis.md",
     "iOS Security Architecture and Themes.md",
     "iOS Static Analysis.md",
